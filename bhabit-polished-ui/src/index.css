@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Your custom CSS here */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-body {
+  font-family: 'Unbounded', sans-serif;
+}
+
+.text-neon-orange {
+  color: #FF6B00;
+}
+.text-neon-green {
+  color: #39FF14;
+}
+.bg-neon-green {
+  background-color: #39FF14;
+}
+.bg-neon-orange {
+  background-color: #FF6B00;
+}
