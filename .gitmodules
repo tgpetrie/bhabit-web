@@ -1,0 +1,3 @@
+[submodule "bhabit-web"]
+	path = bhabit-web
+	url = https://github.com/yourusername/bhabit-web.git
