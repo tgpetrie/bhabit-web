@@ -7,10 +7,60 @@ const { execSync } = require('child_process');
 const path = require('path');
 const fs = require('fs');
 
-// Remove root directory ('.') from the list since it doesn't have a package.json
+// Projects to check
 const projects = ['bhabit-web', 'bhabit-ui', 'bhabit-polished-ui'];
 const originalDir = process.cwd();
 const shouldUpdate = process.argv.includes('update');
+
+// Azure SDK best practices and version checks
+const checkAzurePackages = (packageJson) => {
+  const deps = {
+    ...(packageJson.dependencies || {}),
+    ...(packageJson.devDependencies || {})
+  };
+  
+  // Detect Azure packages
+  const azurePackages = Object.keys(deps).filter(pkg => 
+    pkg.startsWith('@azure/') || 
+    ['azure-functions-core-tools', 'microsoft-identity-web'].includes(pkg)
+  );
+  
+  if (azurePackages.length === 0) return null;
+  
+  const azureResults = {
+    packages: azurePackages,
+    recommendations: []
+  };
+  
+  // Check for identity package (recommended for auth)
+  if (!deps['@azure/identity'] && azurePackages.length > 0) {
+    azureResults.recommendations.push(
+      '⚠️ Consider adding @azure/identity for secure authentication to Azure services'
+    );
+  }
+  
+  // Check for older Azure SDKs
+  const outdatedSDKs = azurePackages.filter(pkg => {
+    const version = deps[pkg];
+    return version && (version.startsWith('^1.') || version.startsWith('1.'));
+  });
+  
+  if (outdatedSDKs.length > 0) {
+    azureResults.recommendations.push(
+      `⚠️ Outdated Azure SDK versions found: ${outdatedSDKs.join(', ')}. Consider updating to latest versions.`
+    );
+  }
+  
+  // Check for missing monitoring dependencies
+  if ((deps['@azure/storage-blob'] || deps['@azure/cosmos']) && 
+      !deps['@azure/monitor-opentelemetry']) {
+    azureResults.recommendations.push(
+      '⚠️ Consider adding @azure/monitor-opentelemetry for better Azure service monitoring'
+    );
+  }
+  
+  return azureResults;
+};
 
 // Check for lockfile and create if missing - fixed implementation
 function ensureLockfile(projectPath) {
@@ -50,7 +100,8 @@ projects.forEach(project => {
   }
   
   // Skip if no package.json exists
-  if (!fs.existsSync(path.join(projectPath, 'package.json'))) {
+  const packageJsonPath = path.join(projectPath, 'package.json');
+  if (!fs.existsSync(packageJsonPath)) {
     console.log(`\nSkipping ${project} - no package.json found`);
     return;
   }
@@ -61,9 +112,27 @@ projects.forEach(project => {
     // Run within the project directory
     process.chdir(projectPath);
     
+    // Check for Azure packages and best practices
+    try {
+      const packageJson = require(packageJsonPath);
+      const azureResults = checkAzurePackages(packageJson);
+      
+      if (azureResults) {
+        console.log(`\n🔷 Azure SDK packages detected (${azureResults.packages.length}):`);
+        console.log(azureResults.packages.join(', '));
+        
+        if (azureResults.recommendations.length > 0) {
+          console.log('\n🔷 Azure Best Practices Recommendations:');
+          azureResults.recommendations.forEach(rec => console.log(rec));
+        }
+      }
+    } catch (e) {
+      console.error('Error checking Azure packages:', e.message);
+    }
+    
     // Check for outdated packages
     try {
-      console.log('Checking for outdated dependencies...');
+      console.log('\nChecking for outdated dependencies...');
       execSync('npm outdated', { stdio: 'inherit' });
     } catch (e) {
       // npm outdated exits with code 1 if outdated deps exist
