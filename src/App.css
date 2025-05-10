@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('./assets/background.png');
+
+body {
+  margin: 0;
+  background-color: #111;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.bg-custom-image {
+  background-image: url('./assets/background.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+}
+
+.bg-chaos {
+  background: linear-gradient(135deg, #ff6b6b, #ffd93d, #6bc1ff);
+  background-size: 600% 600%;
+  animation: animatedBackground 20s ease infinite;
+}
+
+@keyframes animatedBackground {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+
+.glitch-text {
+  text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
+}
+
+.animate-spin-slow {
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
