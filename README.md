@@ -12,7 +12,7 @@ This is the official React-based web app for BHABIT – the rebellious, chaotic 
 - AOS animations for smooth UI transitions
 - BHABIT branding & styling
 - Ready for Vercel or GitHub Pages deployment
->>>>>>> c346b7278c7734c3440dd9eb5ba90e012003a34a
+>>>>>>> 
 
 ## Install & Run
 
@@ -61,4 +61,4 @@ Then rerun:
 npm run build
 ```# bhabit-react
 # bhabit-web
->>>>>>> c346b7278c7734c3440dd9eb5ba90e012003a34a
+>>>>>>> 
