@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../bhabit-web"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"git.ignoreLimitWarning": true
+	}
+}
