@@ -234,8 +234,7 @@ export default function App() {
       
       {/* Navigation */}
       <nav className="nav-container">
-        <a href="#home" className="nav-link">Home</a>
-        <a href="#whitepaper" className="nav-link">Whitepaper</a>
+        <a href="#wp-introduction" className="nav-link">Introduction</a>
         <a href="#wp-tokenomics" className="nav-link">Tokenomics</a>
         <a href="#wp-roadmap" className="nav-link">Roadmap</a>
         <a href="#wp-team" className="nav-link">Team</a>
@@ -258,8 +257,8 @@ export default function App() {
           </h1>
           <div className="spacer"></div>
           <p className="fbi-text">Profits by Impulse</p>
-          <p className="subtitle">Why break bad habits when you can mint them?</p>
-          <a href="#whitepaper" className="button">WHITEPAPER</a>
+          <p className="subtitle">WHY BREAK BAD HABITS WHEN YOU CAN MINT THEM?</p>
+          <a href="#wp-introduction" className="button">WHITEPAPER</a>
           <div className="scroll-indicator">
             <div className="scroll-arrow"></div>
             <div className="scroll-text">Scroll Down</div>

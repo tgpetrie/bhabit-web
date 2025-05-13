@@ -1,0 +1,30 @@
+[33mcommit e51505b9a12e94ac81e7cec08fcb9f123c433a32[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 7fa56dd0 165d32e1
+Author: Bhabit <tgpetrie@gmail.com>
+Date:   Sun May 11 10:20:01 2025 -0500
+
+    Fix repository structure and line endings
+
+[33mcommit 7fa56dd06f1abbd6e5f055cd2a0122903d227c2f[m
+Author: Bhabit <tgpetrie@gmail.com>
+Date:   Sun May 11 09:32:21 2025 -0500
+
+    Update UI styling: Add purple with orange drop shadow to 'Profits by Impulse' text and subtitle, make whitepaper heading purple, update button styling with purple background and orange drop shadow, update copyright text to include Guisan Design, change button text to WHITEPAPER
+
+[33mcommit 165d32e1b4b982f526cca704f6d536e5adb8a35a[m
+Author: Bhabit <tgpetrie@gmail.com>
+Date:   Sat May 10 14:47:25 2025 -0500
+
+    Polished full UI with design system, nav, and animations
+
+[33mcommit dc392112f7dd7e77370b15b4041cf00e31d1469a[m
+Author: Bhabit <tgpetrie@gmail.com>
+Date:   Sat May 10 14:29:07 2025 -0500
+
+    Fix repository structure and line endings
+
+[33mcommit 8dd287aa29a1146bb82829054259f65b178afcff[m
+Author: Bhabit <tgpetrie@gmail.com>
+Date:   Sat May 10 14:25:37 2025 -0500
+
+    Convert bhabit-web to proper submodule
