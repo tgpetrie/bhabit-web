@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,20 +37,6 @@ body {
   animation: spin 10s linear infinite;
 }
 
-=======
-body {
-  margin: 0;
-  font-family: 'Comic Sans MS', cursive;
-  background-color: #111;
-  color: #fff;
-}
-.glitch-text {
-  text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
-}
-.animate-spin-slow {
-  animation: spin 10s linear infinite;
-}
->>>>>>> c346b7278c7734c3440dd9eb5ba90e012003a34a
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
